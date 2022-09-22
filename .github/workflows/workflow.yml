@@ -21,7 +21,7 @@ jobs:
       - name: npm install
         run: npm install
       - name: lint
-        run: npm run eslint .
+        run: npm run lint
       # 11.7
       - name: build
         run: npm run build
@@ -33,7 +33,7 @@ jobs:
           heroku_app_name: "heroic-anecdotes" #Must be unique in Heroku
           heroku_email: "simo.riihimaki@unicus.com"
           healthcheck: "https://heroic-anecdotes.herokuapp.com/health"
-          checkstring: "ok!"
+          checkstring: "All Good Everything!"
           rollbackonhealthcheckfailed: true 
       # 11.18
       - name: Success Job
