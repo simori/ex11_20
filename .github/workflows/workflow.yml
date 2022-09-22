@@ -21,7 +21,7 @@ jobs:
       - name: npm install
         run: npm install
       - name: lint
-        run: npm run eslint
+        run: npm run eslint .
       # 11.7
       - name: build
         run: npm run build
@@ -30,9 +30,9 @@ jobs:
         uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "heroic-pokedex" #Must be unique in Heroku
+          heroku_app_name: "heroic-anecdotes" #Must be unique in Heroku
           heroku_email: "simo.riihimaki@unicus.com"
-          healthcheck: "https://heroic-pokedex.herokuapp.com/health"
+          healthcheck: "https://heroic-anecdotes.herokuapp.com/health"
           checkstring: "ok!"
           rollbackonhealthcheckfailed: true 
       # 11.18
@@ -41,8 +41,8 @@ jobs:
         if: success()
         with:
           severity: info
-          details: Successfully deployed new Pokedex version!
-          description: deployed to https://heroic-pokedex.herokuapp.com by ${{github.event.commits[0].author.username}}!
+          details: Successfully deployed new Anecdotes version!
+          description: deployed to https://heroic-anecdotes.herokuapp.com by ${{github.event.commits[0].author.username}}!
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
       - name: Failed Job
         uses: rjstone/discord-webhook-notify@v1.0.4
